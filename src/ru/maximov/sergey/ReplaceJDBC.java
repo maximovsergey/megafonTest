@@ -29,17 +29,19 @@ public class ReplaceJDBC {
             // для примера возмем hostname "localhost"
             // заменяем данные
             // единственный момент. ничего не сказано про кодировку. поэтому по умолчанию
-            assert s != null;
-            if (s.contains(regex)) {
 
-                String temp = s.replaceFirst(regex, replacement);
-                try {
-                    // пересохраняем файл
-                    FileUtils.writeStringToFile(file, temp);
-                } catch (IOException e) {
-                    e.printStackTrace();
+            if (s != null) {
+                if (s.contains(regex)) {
+
+                    String temp = s.replaceFirst(regex, replacement);
+                    try {
+                        // пересохраняем файл
+                        FileUtils.writeStringToFile(file, temp);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    count++;
                 }
-                count++;
             }
         }
         System.out.println("Изменено " + count + " файл(ов) из " + files.size());
